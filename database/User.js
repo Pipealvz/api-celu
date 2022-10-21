@@ -21,7 +21,8 @@ Usuario.init({
     id: { type: DataTypes.BIGINT, primaryKey: true},
     nombre: { type: DataTypes.STRING },
     correo: { type: DataTypes.STRING },
-    contraseña: { type: DataTypes.STRING }
+    contraseña: { type: DataTypes.STRING },
+    rol_usuario: {type: DataTypes.STRING}
 }, opciones);
 
 // Exportamos Usuarios para poder usarlo en otros archivos javascript

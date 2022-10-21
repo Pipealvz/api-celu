@@ -18,7 +18,8 @@ const sequelize = require("../database/connection");
     });
   } catch (error) {
     res.status(503).json({
-      status: "504",
+      
+      
       type: "FAILED",
       message: "Fail to connect database",
     });
@@ -168,9 +169,13 @@ router.delete("/delete/:id", (req, res) => {
   }
 });*/
 
+
+
+
 const usuario = require('./user.controller');
 
 router.get('/', usuario.getUsuarios);
+router.get('/all', usuario.allUsuarios);
 router.post('/new', usuario.crearUsuario);
 router.post('/auth', usuario.loginSencillo);
 router.delete('/delete/:id', usuario.deleteUser);

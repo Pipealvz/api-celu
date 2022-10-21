@@ -1,13 +1,12 @@
 //const util = require("util");
 //var mysql = require("mysql");
-const config = require('../env.js');
 
 
 const { Sequelize } = require('sequelize');
-const database = config.db;
-const username = config.user_db;
-const password = config.pass;
-const host = config.host_db;
+const database = process.env['DATABASE'];
+const username = process.env['USER'];
+const password = process.env['PASSWORD'];
+const host = process.env['HOST'];
 
 
 const sequelize = new Sequelize(database, username, password, {

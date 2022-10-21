@@ -2,6 +2,8 @@ const Usuario = require('../database/User');
 const usuarioController = {};
 // Operadores de bd como OR, AND, etc...
 const { Op } = require("sequelize");
+const cnn_SQL = require('../database/connection');
+
 
 /**
  * DOCUMENTACIÓN: 
@@ -11,20 +13,28 @@ const { Op } = require("sequelize");
 usuarioController.crearUsuario = async (req, res) => {
     const newUser = Usuario.build(
         {
-            nombre: req.body.nombre,
-            correo: req.body.correo,
-            contraseña: req.body.contraseña
+            nombreRegistro: req.body.nombreRegistro,
+            correoRegistro: req.body.correoRegistro,
+            contraseñaRegistro: req.body.contraseñaRegistro,
+            rol_usuario: 'admin'
         }
     );
     await newUser.save();
     console.log('Usuario creado con éxito!');
     res.json({ status: 200 });
+  console.log(newUser);
 }
 
 // Traemos todos los datos de usuarios de la bd
 usuarioController.getUsuarios = async (req, res) => {
     const usuarios = await Usuario.findAll();
     res.json(usuarios);
+}
+
+usuarioController.allUsuarios = async (req, res) => {
+  const prueba = 
+  await cnn_SQL.query(`SELECT * FROM Usuario`);
+  res.json(prueba);
 }
 
 usuarioController.loginSencillo = async (req, res) => {
